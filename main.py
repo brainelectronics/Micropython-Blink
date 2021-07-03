@@ -5,7 +5,6 @@
 main script, do your stuff here, similar to the loop() function on Arduino
 """
 import time
-from machine import Pin
 
 
 def flash_led(pin, amount):

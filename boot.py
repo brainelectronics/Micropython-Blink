@@ -7,6 +7,7 @@ boot script, do initial stuff here, similar to the setup() function on Arduino
 
 import esp
 import gc
+from machine import Pin
 
 
 # disable ESP os debug output
