@@ -2,12 +2,23 @@
 # -*- coding: UTF-8 -*-
 
 """
-main script, do your stuff here, similar to the loop() function on Arduino
+Main script
+
+Do your stuff here, similar to the loop() function on Arduino
 """
+
 import time
 
 
 def flash_led(pin, amount):
+    """
+    Flash onboard LED
+
+    :param      pin:     The pin connected to the LED
+    :type       pin:     int
+    :param      amount:  The amount the LED flashes
+    :type       amount:  int
+    """
     for x in range(1, amount + 1):
         pin.value(1)
         time.sleep(0.05)
@@ -22,5 +33,5 @@ def loop():
         time.sleep(3)
 
 
-if __name__ == '__main__':
-    loop()
+# MicroPython calls every function inside this file
+loop()

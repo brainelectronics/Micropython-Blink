@@ -2,7 +2,9 @@
 # -*- coding: UTF-8 -*-
 
 """
-boot script, do initial stuff here, similar to the setup() function on Arduino
+Boot script
+
+Do initial stuff here, similar to the setup() function on Arduino
 """
 
 import esp
