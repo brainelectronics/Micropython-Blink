@@ -7,28 +7,13 @@ Main script
 Do your stuff here, similar to the loop() function on Arduino
 """
 
-import time
-
-
-def flash_led(pin, amount):
-    """
-    Flash onboard LED
-
-    :param      pin:     The pin connected to the LED
-    :type       pin:     int
-    :param      amount:  The amount the LED flashes
-    :type       amount:  int
-    """
-    for x in range(1, amount + 1):
-        pin.value(1)
-        time.sleep(0.05)
-        pin.value(0)
-        time.sleep(0.05)
+from blink import flash_led
 
 
 def loop():
     # loop forever
     while True:
+        # flash LED 3 times, then sleep for 3 seconds
         flash_led(led_pin, 3)
         time.sleep(3)
 
