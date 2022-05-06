@@ -68,11 +68,42 @@ Execute the folling commands inside the rshell to copy the files to the board.
 
 ```bash
 # inside the rshell
-cp main.py /pyboard
+cp blink.py /pyboard
 cp boot.py /pyboard
+cp main.py /pyboard
+```
+
+### Precompile module
+
+The MicroPython board has to convert the provided `*.py` files during runtime
+into a file that can be executed by the controller. To speed things up and to
+reduce the CPU load these files can be cross-compiled on a computer and then
+transfered to the MicroPython board.
+
+See [MicroPython cross-compile README][ref-upy-cross-compile-readme]
+
+> This will create a file foo.mpy which can then be copied to a place
+> accessible by the target MicroPython runtime (eg onto a pyboard's
+> filesystem), and then imported like any other Python module using import foo.
+
+In this example the [`blink.py`][blink.py] file gets cross-compiled
+
+```bash
+python -m mpy_cross blink.py
+rshell -p /dev/tty.wchusbserial1410
+```
+
+Execute the folling commands inside the rshell to copy the cross-compiled
+file to the board and remove the prevoiusly copied, non cross-compiled file.
+
+```bash
+# inside the rshell
+cp blink.mpy /pyboard
+rm /pyboard/blink.py
 ```
 
 <!-- Links -->
 [ref-esptool]: https://github.com/espressif/esptool
 [ref-remote-upy-shell]: https://github.com/dhylands/rshell
 [ref-upy-firmware-download]: https://micropython.org/download/
+[ref-upy-cross-compile-readme]: https://github.com/micropython/micropython/tree/master/mpy-cross
